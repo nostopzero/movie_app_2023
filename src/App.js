@@ -1,18 +1,23 @@
-import React from 'react';
+import React from "react";
 
-function Movie({fav}) {
-  return <h3>I love {fav}.</h3>;
-}
+class App extends React.Component {
 
-function App() {
-  return (
-    <div>
-      <h1>Helllllllo React</h1>
-      <Movie fav="avatar" />
-      <Movie fav="criminal" />
-      <Movie fav="saw" />
-    </div>
-  );
+  state = {
+    isLoading: true,
+    movie: []
+  };
+
+  componentDidMount() {
+    //영화 데이터 로딩
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 6000)
+  }
+
+  render() {
+    const { isLoading } = this.state;
+    return <div>{isLoading ? 'Loading...' : 'We are ready'}</div>;
+  }
 }
 
 export default App;
